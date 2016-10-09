@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
   has_many :country_issues, as: :issueable
   has_many :countries, through: :country_issues
 
-  has_attached_file :primary_photo
+  has_attached_file :primary_photo, default_url: "no_image.png"
   # we are not validating because users are not uploading photos
   do_not_validate_attachment_file_type :primary_photo
 

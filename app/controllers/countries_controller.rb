@@ -1,12 +1,14 @@
 class CountriesController < ApplicationController
 
   def index
+    @countries = Country.all
   end
 
   def show
     @country = Country.find(params[:id])
     set_top_concerns(@country)
     set_products_by_section(@country)
+
   end
 
   private
