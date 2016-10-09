@@ -51,7 +51,7 @@ AnimalGroup.create!([
 ])
 Country.create!([
   {name: "Jamaica", code: 0},
-  {name: "Thailand", code: 1}
+  {name: "Thailand", code: 0}
 ])
 CountryIssue.create!([
   {country_id: 1, issueable_id: 1, issueable_type: "AnimalGroup", top_concern: false},
@@ -64,7 +64,12 @@ CountryIssue.create!([
   {country_id: 1, issueable_id: 4, issueable_type: "ProductGroup", top_concern: false},
   {country_id: 1, issueable_id: 5, issueable_type: "ProductGroup", top_concern: false},
   {country_id: 2, issueable_id: 5, issueable_type: "AnimalGroup", top_concern: true},
-  {country_id: 2, issueable_id: 6, issuable_type: "ProductGroup", top_concern: true}
+  {country_id: 2, issueable_id: 6, issueable_type: "ProductGroup", top_concern: true}
+])
+Picture.create!([
+  {picture_file_name: "4524663590_03cabbffab_m.jpg", picture_content_type: "image/jpeg", picture_file_size: 43544, picture_updated_at: "2016-10-09 14:07:40", name: "hawksbill 1", imageable_id: 3, imageable_type: "AnimalGroup"},
+  {picture_file_name: "1024px-Loggerhead_sea_turtle.jpg", picture_content_type: "image/jpeg", picture_file_size: 99065, picture_updated_at: "2016-10-09 14:10:16", name: "sea turtle side eye", imageable_id: 3, imageable_type: "AnimalGroup"},
+  {picture_file_name: "640px-Green_Sea_Turtle_grazing_seagrass.jpg", picture_content_type: "image/jpeg", picture_file_size: 87633, picture_updated_at: "2016-10-09 14:11:16", name: "sea turtle eating sea grass", imageable_id: 3, imageable_type: "AnimalGroup"}
 ])
 Product.create!([
   {name: "Conch Meat",
