@@ -15,4 +15,8 @@ $(document).ready(function () {
       el.text("More")
     }
   });
+
+  $("#country-select").change(function(e) {
+    this.form.submit();
+  })
 });

@@ -2,29 +2,30 @@
 <html>
 <head>
   <title>Wildlife Friendly Traveler</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.green-blue.min.css" />
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
   
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base<% if !@country %> hmp<% end %>">
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 		<header class="mdl-layout__header">
 		    <div class="mdl-layout__header-row">
 		      <!-- Title -->
-		      <span class="mdl-layout-title"><% if @country.name %><%= @country.name %><% else %>Wildlife Friendly Traveler<% end %></span>
+		      <span class="mdl-layout-title"><% if @country %><%= @country.name %><% else %>Wildlife Friendly Traveler<% end %></span>
 		      <div class="mdl-layout-spacer"></div>
 		      <!-- Navigation -->
 		      <nav class="mdl-navigation">
-		        <% if !@country.name %>Wildlife Friendly Traveler<% end %>
+		        <% if !@country %>Wildlife Friendly Traveler<% end %>
+		        <a class="mdl-navigation__link" href="/">Home</a>
 		        <a class="mdl-navigation__link" href="">About</a>
 		        <a class="mdl-navigation__link" href="">Contact</a>
 		      </nav>
 		    </div>
-		    <% if @country.name %>
+		    <% if @country %>
 			    <!-- Tabs -->
 			    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
 			      <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Top Concerns</a>

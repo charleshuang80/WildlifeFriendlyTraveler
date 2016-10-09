@@ -4,39 +4,18 @@
 
 <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
           <div class="page-content">
-<% @top_concerns.each do |issue_group| %>
+	<% @top_concerns.each do |issue_group| %>
             <div class="card-wide mdl-card mdl-shadow--2dp">
               <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--2-col">
-                	<%= image_tag(issue_group.try(:primary_photo), :class => "group-img round med") %>
+                	<div class="round med"><%= image_tag(issue_group.try(:primary_photo), :class => "group-img") %></div>
                 </div>
                 <div class="mdl-cell mdl-cell--10-col">
                   <h4><%= issue_group.try(:name) %></h4>
                   <p><%= issue_group.try(:description) %></p>
-                  <div class="more">
-                    More blah
-                    blah
-                  </div>
-                </div>
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect more-toggle">
-                  More
-                </a>
-              </div>
-            </div>
-<% end %>
-
-
-            <div class="card-wide mdl-card mdl-shadow--2dp">
-              <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--2-col">
-                  <div class="round med"><img src="https://pixabay.com/static/uploads/photo/2014/08/26/13/28/sea-turtle-427942_960_720.jpg" class="group-img"></div>
-                </div>
-                <div class="mdl-cell mdl-cell--10-col">
-                  <h4>Turtles</h4>
-                  <p>Many species of parrots are threatened or endangered as they are commonly sold as a pet to tourists. This threatens their wild population and increases the chances of extinction in the wild.</p>
-                  <div class="more">
+                  
+				  <div class="more">
+				  <!--
                     <div class="image-gallery">
                       <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Hawksbill_Sea_Turtle_Carey_de_Concha_%285840602412%29.jpg">
                       <img src="https://muestracine.files.wordpress.com/2013/09/shutterstock_143039761.jpg">
@@ -45,40 +24,23 @@
                       <img src="http://vldb.org/2015/farm8.staticflickr.com/7393/12776939755_95e05ba862_o.jpg">
                       <img src="http://www.lbknews.com/wp-content/uploads/2012/07/greenseaturtle-1024x768.jpg">
                     </div>
-
-                    <h5>Products made from Sea Turtles</h5>
-                    <p>Sea Turtles are used in many different products. Below are some of the most common types of products in Jamaica</p>
+					-->
+                    <h5>Products made from <%= issue_group.try(:name) %></h5>
+                    <p><%= issue_group.try(:name) %> products come in many different shapes and forms. Below are some of the most common types of products in Jamaica to be aware of.</p>
                     <div class="product-listing">
-                      <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--2-col">
-                          <div class="round small"><img src="https://www.nps.gov/drto/learn/nature/images/Sea_turtle_confiscatedUSFWS_1.jpg"></div>
-                        </div>
-                        <div class="mdl-cell mdl-cell--8-col">
-                          <h6>Figurines</h6>
-                          <p>Sea turtle figurines are made from juvenile sea turtles that are caught and killed.</p>
-                        </div>
-                      </div>
-                      <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--2-col">
-                          <div class="round small"><img src="http://blogs.lsc.org/files/2016/04/20160427_112509.jpg"></div>
-                        </div>
-                        <div class="mdl-cell mdl-cell--8-col">
-                          <h6>Leather and Leather Products</h6>
-                          <p>Leather products such as shoes, boots, belts, and purses can be made out of sea turtle skin.</p>
-                        </div>
-                      </div>
-                      <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--2-col">
-                          <div class="round small"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Turtle_soup_chinese.jpg/1280px-Turtle_soup_chinese.jpg"></div>
-                        </div>
-                        <div class="mdl-cell mdl-cell--8-col">
-                          <h6>Turtle Soup</h6>
-                          <p>While turtle soup can be made using unendangered turtles it's important to ensure it's not sea turtles.</p>
-                        </div>
-                      </div>
-
+                    	<% issue_group.products.each do |product| %>
+		                      <div class="mdl-grid">
+		                        <div class="mdl-cell mdl-cell--2-col">
+		                          <div class="round small"><%= image_tag(product.try(:primary_photo)) %></div>
+		                        </div>
+		                        <div class="mdl-cell mdl-cell--8-col">
+		                          <h6><%= product.try(:name) %></h6>
+		                          <p><%= product.try(:description) %></p>
+		                        </div>
+		                      </div>
+                      	<% end %>
+                  	</div>
                   </div>
-                  
                 </div>
               </div>
               <div class="mdl-card__actions mdl-card--border">
@@ -87,6 +49,167 @@
                 </a>
               </div>
             </div>
+		   <% end %>
 
           </div>
         </section>
+
+		<section class="mdl-layout__tab-panel" id="scroll-tab-2">
+          <div class="page-content">
+          	<% @food_products.each do |prod| %>
+	          	<div class="card-wide mdl-card mdl-shadow--2dp">
+	              <div class="mdl-grid">
+	                <div class="mdl-cell mdl-cell--2-col">
+	                  <div class="round med"><%= image_tag(prod.try(:primary_photo), :class => "group-img") %></div>
+	                </div>
+	                <div class="mdl-cell mdl-cell--10-col">
+	                  <h4><%= prod.try(:name) %></h4>
+	                  <p><%= prod.try(:description) %></p>
+	                  <% if prod.recommendations %>
+	                    <div class="more">
+	                      <h6>Recommendations</h5>
+	                      <p><%= prod.try(:recommendations) %></p>
+	                    </div>
+	                  <% end %>
+	                </div>
+	              </div>
+	              <% if prod.recommendations %>
+		              <div class="mdl-card__actions mdl-card--border">
+		                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect more-toggle">
+		                  More
+		                </a>
+		              </div>
+	              <% end %>
+	            </div>
+            <% end %>
+          </div>
+        </section>
+
+        <section class="mdl-layout__tab-panel" id="scroll-tab-3">
+          <div class="page-content">
+          	<% @art_decor_products.each do |prod| %>
+	          	<div class="card-wide mdl-card mdl-shadow--2dp">
+	              <div class="mdl-grid">
+	                <div class="mdl-cell mdl-cell--2-col">
+	                  <div class="round med"><%= image_tag(prod.try(:primary_photo), :class => "group-img") %></div>
+	                </div>
+	                <div class="mdl-cell mdl-cell--10-col">
+	                  <h4><%= prod.try(:name) %></h4>
+	                  <p><%= prod.try(:description) %></p>
+	                  <% if prod.recommendations %>
+	                    <div class="more">
+	                      <h6>Recommendations</h5>
+	                      <p><%= prod.try(:recommendations) %></p>
+	                    </div>
+	                  <% end %>
+	                </div>
+	              </div>
+	              <% if prod.recommendations %>
+		              <div class="mdl-card__actions mdl-card--border">
+		                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect more-toggle">
+		                  More
+		                </a>
+		              </div>
+	              <% end %>
+	            </div>
+            <% end %>
+
+          </div>
+        </section>
+
+        <section class="mdl-layout__tab-panel" id="scroll-tab-4">
+          <div class="page-content">
+          	<% @clothing_accessories_products.each do |prod| %>
+	          	<div class="card-wide mdl-card mdl-shadow--2dp">
+	              <div class="mdl-grid">
+	                <div class="mdl-cell mdl-cell--2-col">
+	                  <div class="round med"><%= image_tag(prod.try(:primary_photo), :class => "group-img") %></div>
+	                </div>
+	                <div class="mdl-cell mdl-cell--10-col">
+	                  <h4><%= prod.try(:name) %></h4>
+	                  <p><%= prod.try(:description) %></p>
+	                  <% if prod.recommendations %>
+	                    <div class="more">
+	                      <h6>Recommendations</h5>
+	                      <p><%= prod.try(:recommendations) %></p>
+	                    </div>
+	                  <% end %>
+	                </div>
+	              </div>
+	              <% if prod.recommendations %>
+		              <div class="mdl-card__actions mdl-card--border">
+		                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect more-toggle">
+		                  More
+		                </a>
+		              </div>
+	              <% end %>
+	            </div>
+            <% end %>
+          </div>
+        </section>
+
+        <section class="mdl-layout__tab-panel" id="scroll-tab-5">
+          <div class="page-content">
+          	<% @animals_products.each do |prod| %>
+	          	<div class="card-wide mdl-card mdl-shadow--2dp">
+	              <div class="mdl-grid">
+	                <div class="mdl-cell mdl-cell--2-col">
+	                  <div class="round med"><%= image_tag(prod.try(:primary_photo), :class => "group-img") %></div>
+	                </div>
+	                <div class="mdl-cell mdl-cell--10-col">
+	                  <h4><%= prod.try(:name) %></h4>
+	                  <p><%= prod.try(:description) %></p>
+	                  <% if prod.recommendations %>
+	                    <div class="more">
+	                      <h6>Recommendations</h5>
+	                      <p><%= prod.try(:recommendations) %></p>
+	                    </div>
+	                  <% end %>
+	                </div>
+	              </div>
+	              <% if prod.recommendations %>
+		              <div class="mdl-card__actions mdl-card--border">
+		                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect more-toggle">
+		                  More
+		                </a>
+		              </div>
+	              <% end %>
+	            </div>
+            <% end %>
+          </div>
+        </section>
+
+        <section class="mdl-layout__tab-panel" id="scroll-tab-6">
+          <div class="page-content">
+          	<% @plants_products.each do |prod| %>
+	          	<div class="card-wide mdl-card mdl-shadow--2dp">
+	              <div class="mdl-grid">
+	                <div class="mdl-cell mdl-cell--2-col">
+	                  <div class="round med"><%= image_tag(prod.try(:primary_photo), :class => "group-img") %></div>
+	                </div>
+	                <div class="mdl-cell mdl-cell--10-col">
+	                  <h4><%= prod.try(:name) %></h4>
+	                  <p><%= prod.try(:description) %></p>
+	                  <% if prod.recommendations %>
+	                    <div class="more">
+	                      <h6>Recommendations</h5>
+	                      <p><%= prod.try(:recommendations) %></p>
+	                    </div>
+	                  <% end %>
+	                </div>
+	              </div>
+	              <% if prod.recommendations %>
+		              <div class="mdl-card__actions mdl-card--border">
+		                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect more-toggle">
+		                  More
+		                </a>
+		              </div>
+	              <% end %>
+	            </div>
+            <% end %>
+          </div>
+        </section>
+
+
+
+
