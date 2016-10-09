@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'country_controller#index'
+  root 'countries#index'
 
   resources :countries, only: [:index, :show]
 

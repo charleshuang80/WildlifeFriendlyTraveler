@@ -11,8 +11,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<header class="mdl-layout__header">
+		    <div class="mdl-layout__header-row">
+		      <!-- Title -->
+		      <span class="mdl-layout-title"><% if @country.name %><%= @country.name %><% else %>Wildlife Friendly Traveler<% end %></span>
+		      <div class="mdl-layout-spacer"></div>
+		      <!-- Navigation -->
+		      <nav class="mdl-navigation">
+		        <% if !@country.name %>Wildlife Friendly Traveler<% end %>
+		        <a class="mdl-navigation__link" href="">About</a>
+		        <a class="mdl-navigation__link" href="">Contact</a>
+		      </nav>
+		    </div>
+		    <% if @country.name %>
+			    <!-- Tabs -->
+			    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+			      <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Top Concerns</a>
+			      <a href="#scroll-tab-2" class="mdl-layout__tab">Food</a>
+			      <a href="#scroll-tab-3" class="mdl-layout__tab">Art & Decor</a>
+			      <a href="#scroll-tab-4" class="mdl-layout__tab">Clothing & Accessories</a>
+			      <a href="#scroll-tab-5" class="mdl-layout__tab">Live Animals</a>
+			      <a href="#scroll-tab-6" class="mdl-layout__tab">Plants</a>
+			    </div>
+		    <% end %>
+		</header>
 
-<%= yield %>
+		<main class="mdl-layout__content">
+			<%= yield %>
+		</main>
+	
+	</div>
 
 </body>
 </html>
