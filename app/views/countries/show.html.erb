@@ -15,18 +15,16 @@
                   <p><%= issue_group.try(:description) %></p>
                   
 				  <div class="more">
-				  <!--
-                    <div class="image-gallery">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Hawksbill_Sea_Turtle_Carey_de_Concha_%285840602412%29.jpg">
-                      <img src="https://muestracine.files.wordpress.com/2013/09/shutterstock_143039761.jpg">
-                      <img src="https://pixabay.com/static/uploads/photo/2014/12/26/23/46/sea-turtle-580778_960_720.jpg">
-                      <img src="https://pixabay.com/static/uploads/photo/2014/08/26/13/28/sea-turtle-427942_960_720.jpg">
-                      <img src="http://vldb.org/2015/farm8.staticflickr.com/7393/12776939755_95e05ba862_o.jpg">
-                      <img src="http://www.lbknews.com/wp-content/uploads/2012/07/greenseaturtle-1024x768.jpg">
-                    </div>
-					-->
+				  
+                  <div class="image-gallery">
+                  	  
+                  	  <% issue_group.pictures.each do |photo| %>
+	                      <%= image_tag(photo.picture) %>
+	                  <% end %>
+                  </div>
+				  
                     <h5>Products made from <%= issue_group.try(:name) %></h5>
-                    <p><%= issue_group.try(:name) %> products come in many different shapes and forms. Below are some of the most common types of products in Jamaica to be aware of.</p>
+                    <p><%= issue_group.try(:name) %> products come in many different shapes and forms. Below are some of the most common types of products in <%= @country.name %> to be aware of.</p>
                     <div class="product-listing">
                     	<% issue_group.products.each do |product| %>
 		                      <div class="mdl-grid">
