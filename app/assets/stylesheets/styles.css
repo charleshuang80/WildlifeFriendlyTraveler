@@ -45,7 +45,8 @@
 }
 
 .hmp {
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/43/Angry_elephant_ears.jpg");
+  /*background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/43/Angry_elephant_ears.jpg");*/
+  background-image: url("https://c2.staticflickr.com/8/7358/26813509361_e5d83b8071_b.jpg");
   background-size: cover;
 }
 
