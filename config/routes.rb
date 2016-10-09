@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  root 'country_controller#index'
+
+  resources :countries, only: [:index, :show]
+
+  get 'example', to: 'static_pages#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
