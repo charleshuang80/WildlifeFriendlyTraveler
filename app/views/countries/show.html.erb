@@ -1,0 +1,15 @@
+<h1><%= @country.name %></h1>
+<h2>These are examples</h2>
+
+<h3>Top Concerns</h3>
+
+<% @top_concerns.each do |issue_group| %>
+  <%= issue_group.try(:name) %>
+  <br>
+  <%= issue_group.try(:description) %>
+  <br>
+  <%#= image_tag @user.avatar.url %>
+  <%= image_tag issue_group.try(:primary_photo) %>
+  <br>
+  <%= issue_group.try(:status) %>
+<% end %>
