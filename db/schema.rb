@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008204421) do
+ActiveRecord::Schema.define(version: 20161009000102) do
 
   create_table "animal_groups", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20161008204421) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "country_issues", force: :cascade do |t|
+    t.integer  "country_id"
+    t.integer  "issueable_id"
+    t.string   "issueable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "top_concern",    default: false, null: false
+  end
+
+  add_index "country_issues", ["issueable_id", "issueable_type"], name: "index_country_issues_on_issueable_id_and_issueable_type"
 
   create_table "pictures", force: :cascade do |t|
     t.string   "picture_file_name"

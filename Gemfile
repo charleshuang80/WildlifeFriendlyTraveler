@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # paperclip to handle images
 gem 'paperclip', '~> 5.0.0'
 
+# want to create seed from database
+gem 'seed_dump'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
