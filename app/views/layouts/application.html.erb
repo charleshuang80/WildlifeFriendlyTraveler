@@ -19,7 +19,7 @@
 		      <div class="mdl-layout-spacer"></div>
 		      <!-- Navigation -->
 		      <nav class="mdl-navigation">
-		        <% if !@country %>Wildlife Friendly Traveler<% end %>
+		        <% if @country %>Wildlife Friendly Traveler<% end %>
 		        <a class="mdl-navigation__link" href="/">Home</a>
 		        <a class="mdl-navigation__link" href="">About</a>
 		        <a class="mdl-navigation__link" href="">Contact</a>
@@ -29,11 +29,11 @@
 			    <!-- Tabs -->
 			    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
 			      <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Top Concerns</a>
-			      <a href="#scroll-tab-2" class="mdl-layout__tab">Food</a>
-			      <a href="#scroll-tab-3" class="mdl-layout__tab">Art & Decor</a>
-			      <a href="#scroll-tab-4" class="mdl-layout__tab">Clothing & Accessories</a>
-			      <a href="#scroll-tab-5" class="mdl-layout__tab">Live Animals</a>
-			      <a href="#scroll-tab-6" class="mdl-layout__tab">Plants</a>
+			      <% if @food_products %><a href="#scroll-tab-2" class="mdl-layout__tab">Food</a><% end %>
+			      <% if @art_decor_products %><a href="#scroll-tab-3" class="mdl-layout__tab">Art & Decor</a><% end %>
+			      <% if @clothing_accessories_products %><a href="#scroll-tab-4" class="mdl-layout__tab">Clothing & Accessories</a><% end %>
+			      <% if @animals_products %><a href="#scroll-tab-5" class="mdl-layout__tab">Animals</a><% end %>
+			      <% if @plants_products %><a href="#scroll-tab-6" class="mdl-layout__tab">Plants</a><% end %>
 			    </div>
 		    <% end %>
 		</header>
