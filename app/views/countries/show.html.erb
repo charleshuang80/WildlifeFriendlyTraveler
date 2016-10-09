@@ -52,7 +52,7 @@
 
           </div>
         </section>
-
+    <% if @food_products %>
 		<section class="mdl-layout__tab-panel" id="scroll-tab-2">
           <div class="page-content">
           	<% @food_products.each do |prod| %>
@@ -83,7 +83,9 @@
             <% end %>
           </div>
         </section>
+     <% end %>
 
+     <% if @art_decor_products %>
         <section class="mdl-layout__tab-panel" id="scroll-tab-3">
           <div class="page-content">
           	<% @art_decor_products.each do |prod| %>
@@ -115,7 +117,9 @@
 
           </div>
         </section>
+    <% end %>
 
+    <% if @clothing_accessories_products %>
         <section class="mdl-layout__tab-panel" id="scroll-tab-4">
           <div class="page-content">
           	<% @clothing_accessories_products.each do |prod| %>
@@ -146,7 +150,9 @@
             <% end %>
           </div>
         </section>
+    <% end %>
 
+    <% if @animals_products %>
         <section class="mdl-layout__tab-panel" id="scroll-tab-5">
           <div class="page-content">
           	<% @animals_products.each do |prod| %>
@@ -177,7 +183,9 @@
             <% end %>
           </div>
         </section>
+    <% end %>
 
+    <% if @plants_products %>
         <section class="mdl-layout__tab-panel" id="scroll-tab-6">
           <div class="page-content">
           	<% @plants_products.each do |prod| %>
@@ -208,3 +216,4 @@
             <% end %>
           </div>
         </section>
+    <% end %>

@@ -17,6 +17,6 @@ $(document).ready(function () {
   });
 
   $("#country-select").change(function(e) {
-    this.form.submit();
+    window.location = "/countries/"+this.value;
   })
 });
