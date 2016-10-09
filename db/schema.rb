@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009000102) do
+ActiveRecord::Schema.define(version: 20161009021810) do
 
   create_table "animal_groups", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20161009000102) do
     t.integer  "section_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "status"
   end
 
   add_index "animal_groups", ["section_id"], name: "index_animal_groups_on_section_id"
@@ -79,8 +80,13 @@ ActiveRecord::Schema.define(version: 20161009000102) do
     t.text     "description"
     t.integer  "product_group_id"
     t.integer  "animal_group_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "primary_photo_file_name"
+    t.string   "primary_photo_content_type"
+    t.integer  "primary_photo_file_size"
+    t.datetime "primary_photo_updated_at"
+    t.text     "recommendations"
   end
 
   add_index "products", ["animal_group_id"], name: "index_products_on_animal_group_id"

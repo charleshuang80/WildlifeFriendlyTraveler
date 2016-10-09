@@ -29,6 +29,9 @@ gem 'paperclip', '~> 5.0.0'
 # want to create seed from database
 gem 'seed_dump'
 
+# Google's Material Design Lite
+gem 'material_design_lite-rails', '~> 1.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
