@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161009021810) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "animal_groups", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -27,7 +30,7 @@ ActiveRecord::Schema.define(version: 20161009021810) do
     t.text     "status"
   end
 
-  add_index "animal_groups", ["section_id"], name: "index_animal_groups_on_section_id"
+  add_index "animal_groups", ["section_id"], name: "index_animal_groups_on_section_id", using: :btree
 
   create_table "countries", force: :cascade do |t|
     t.string   "name"
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 20161009021810) do
     t.boolean  "top_concern",    default: false, null: false
   end
 
-  add_index "country_issues", ["issueable_id", "issueable_type"], name: "index_country_issues_on_issueable_id_and_issueable_type"
+  add_index "country_issues", ["issueable_id", "issueable_type"], name: "index_country_issues_on_issueable_id_and_issueable_type", using: :btree
 
   create_table "pictures", force: :cascade do |t|
     t.string   "picture_file_name"
@@ -59,7 +62,7 @@ ActiveRecord::Schema.define(version: 20161009021810) do
     t.datetime "updated_at"
   end
 
-  add_index "pictures", ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
+  add_index "pictures", ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id", using: :btree
 
   create_table "product_groups", force: :cascade do |t|
     t.string   "name"
@@ -73,7 +76,7 @@ ActiveRecord::Schema.define(version: 20161009021810) do
     t.datetime "updated_at"
   end
 
-  add_index "product_groups", ["section_id"], name: "index_product_groups_on_section_id"
+  add_index "product_groups", ["section_id"], name: "index_product_groups_on_section_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -89,8 +92,8 @@ ActiveRecord::Schema.define(version: 20161009021810) do
     t.text     "recommendations"
   end
 
-  add_index "products", ["animal_group_id"], name: "index_products_on_animal_group_id"
-  add_index "products", ["product_group_id"], name: "index_products_on_product_group_id"
+  add_index "products", ["animal_group_id"], name: "index_products_on_animal_group_id", using: :btree
+  add_index "products", ["product_group_id"], name: "index_products_on_product_group_id", using: :btree
 
   create_table "sections", force: :cascade do |t|
     t.string   "name",       null: false
@@ -99,4 +102,8 @@ ActiveRecord::Schema.define(version: 20161009021810) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "animal_groups", "sections"
+  add_foreign_key "product_groups", "sections"
+  add_foreign_key "products", "animal_groups"
+  add_foreign_key "products", "product_groups"
 end

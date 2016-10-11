@@ -1,59 +1,55 @@
-
-
-
-
 <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
-          <div class="page-content">
-	<% @top_concerns.each do |issue_group| %>
-            <div class="card-wide mdl-card mdl-shadow--2dp">
-              <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--2-col">
-                	<div class="round med"><%= image_tag(issue_group.try(:primary_photo), :class => "group-img") %></div>
-                </div>
-                <div class="mdl-cell mdl-cell--10-col">
-                  <h4><%= issue_group.try(:name) %></h4>
-                  <p><%= issue_group.try(:description) %></p>
-                  
-				  <div class="more">
-				  
-                  <div class="image-gallery">
-                  	  
-                  	  <% issue_group.pictures.each do |photo| %>
-	                      <%= image_tag(photo.picture) %>
-	                  <% end %>
-                  </div>
-				  
-                    <h5>Products made from <%= issue_group.try(:name) %></h5>
-                    <p><%= issue_group.try(:name) %> products come in many different shapes and forms. Below are some of the most common types of products in <%= @country.name %> to be aware of.</p>
-                    <div class="product-listing">
-                    	<% issue_group.products.each do |product| %>
-		                      <div class="mdl-grid">
-		                        <div class="mdl-cell mdl-cell--2-col">
-		                          <div class="round small"><%= image_tag(product.try(:primary_photo)) %></div>
-		                        </div>
-		                        <div class="mdl-cell mdl-cell--8-col">
-		                          <h6><%= product.try(:name) %></h6>
-		                          <p><%= product.try(:description) %></p>
-		                        </div>
-		                      </div>
-                      	<% end %>
-                  	</div>
-                  </div>
+  <div class="page-content">
+  	<% @top_concerns.each do |issue_group| %>
+      <div class="card-wide mdl-card mdl-shadow--2dp">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col">
+          	<div class="round med"><%= image_tag(issue_group.try(:primary_photo), :class => "group-img") %></div>
+          </div>
+          <div class="mdl-cell mdl-cell--10-col">
+            <h4><%= issue_group.try(:name) %></h4>
+            <p><%= issue_group.try(:description) %></p>
 
-                </div>
+  				  <div class="more">
+
+              <div class="image-gallery">
+            	  <% issue_group.pictures.each do |photo| %>
+                  <%= image_tag(photo.picture) %>
+                <% end %>
               </div>
-              <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect more-toggle">
-                  More
-                </a>
-              </div>
+
+              <h5>Products made from <%= issue_group.try(:name) %></h5>
+              <p><%= issue_group.try(:name) %> products come in many different shapes and forms. Below are some of the most common types of products in <%= @country.name %> to be aware of.</p>
+              <div class="product-listing">
+              	<% issue_group.products.each do |product| %>
+                    <div class="mdl-grid">
+                      <div class="mdl-cell mdl-cell--2-col">
+                        <div class="round small"><%= image_tag(product.try(:primary_photo)) %></div>
+                      </div>
+                      <div class="mdl-cell mdl-cell--8-col">
+                        <h6><%= product.try(:name) %></h6>
+                        <p><%= product.try(:description) %></p>
+                      </div>
+                    </div>
+                	<% end %>
+            	</div>
             </div>
-		   <% end %>
 
           </div>
-        </section>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect more-toggle">
+            More
+          </a>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</section>
+
     <% if @food_products %>
-		<section class="mdl-layout__tab-panel" id="scroll-tab-2">
+  		<section class="mdl-layout__tab-panel" id="scroll-tab-2">
           <div class="page-content">
           	<% @food_products.each do |prod| %>
 	          	<div class="card-wide mdl-card mdl-shadow--2dp">

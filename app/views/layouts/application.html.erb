@@ -6,11 +6,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
-  
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base<% if !@country %> hmp<% end %>">
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base <%= 'hmp' unless @country %>">
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 		<header class="mdl-layout__header">
 		    <div class="mdl-layout__header-row">
@@ -41,7 +41,7 @@
 		<main class="mdl-layout__content">
 			<%= yield %>
 		</main>
-	
+
 	</div>
 
 </body>
